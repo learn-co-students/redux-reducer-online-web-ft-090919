@@ -1,46 +1,26 @@
-export function manageFriends(state = {friends: []}, action) {
-  
-  
-    swtich(action.type){
-        
-          case "ADD_FRIEND":
-      return (
-        {...state,
-            friends: [
-              ...state.friends,
-              action.friend
-            ]
-        }
-    )
+export function manageFriends(
+  state = {
+    friends: []
+  },
+  action
+) {
+  switch (action.type) {
+    case "ADD_FRIEND":
+      return { ...state, friends: [...state.friends, action.friend] };
 
+    case "REMOVE_FRIEND":
+      const removalIndex = state.friends.findIndex(
+        friend => friend.id === action.id
+      );
+      return {
+        ...state,
+        friends: [
+          ...state.friends.slice(0, removalIndex),
+          ...state.friends.slice(removalIndex + 1)
+        ]
+      };
 
-        // case 'REMOVE_FRIEND':
-
-        // default: return state
-  };
-}
-
-
-//  switch(action.type) {
-
-//     case "ADD_FRIEND":
-//       return (
-//         {...state,
-//             friends: [
-//               ...state.friends,
-//               action.friend
-//             ]
-//         }
-//     )
-//  }
-
-let action = {
-    type: "ADD_FRIEND",
-    friend: {
-      name: "Chrome Boi"
-      homewtown: "NYC",
-      id: 1
-    }
+    default:
+      return state;
   }
-
-  manageFriends({friends: []}, action )
+}
