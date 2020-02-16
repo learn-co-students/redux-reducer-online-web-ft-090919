@@ -23,17 +23,17 @@ code in `src/reducers/manageFriends.js` and `serc/reducers/managePresents.js`.
 ## Instructions
 
 1. In `managePresents.js`, write a function called `managePresents()` that takes
-   in the previous state and an action as its argument. Set an default value for
+   in the previous state and an action as its argument. Set a default value for
    the state argument - an object with a key, `numberOfPresents`, assigned to
    `0`.
 
    Actions passed into this reducer will only have a _type_ attribute, so they
    would look something like this:
 
-      ```js
-        action = {
-          type: "INCREASE"
-        }
+    ```js
+      action = {
+        type: "INCREASE"
+      }
       ```
 
    If the reducer receives a `type` set to `"INCREASE"`, return a new state
